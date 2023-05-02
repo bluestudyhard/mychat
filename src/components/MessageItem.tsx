@@ -69,7 +69,8 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
     <div class="py-2 -mx-4 px-4 transition-colors md:hover:bg-slate/3">
       <div class="flex gap-3 rounded-lg" class:op-75={role === 'user'}>
         <div class={`shrink-0 w-7 h-7 mt-4 rounded-full op-80 `}>
-          {role === 'user' ? <img class="rounded-full" src={avatur} /> : ` ${roleClass[role]} `}
+          {role === 'user' && <img class="rounded-full" src={avatur} />}
+          {role === 'assistant' && class=`${roleclass[role]}`}
         </div>
         <div class="message prose break-words overflow-hidden" innerHTML={htmlString()} />
       </div>
