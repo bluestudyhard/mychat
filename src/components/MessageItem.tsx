@@ -7,6 +7,7 @@ import mdHighlight from 'markdown-it-highlightjs'
 import IconRefresh from './icons/Refresh'
 import { useClipboard, useEventListener } from 'solidjs-use'
 import UserAvatar from './icons/avatur'
+import avatur from './icons/UserAvatar.svg'
 interface Props {
   role: ChatMessage['role']
   message: Accessor<string> | string
@@ -68,20 +69,20 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
     <div class="py-2 -mx-4 px-4 transition-colors md:hover:bg-slate/3">
       <div class="flex gap-3 rounded-lg" class:op-75={role === 'user'}>
         <div class={` w-7 h-7 mt-4 rounded-full op-80 `}>
-          {role === 'user' ? <UserAvatar /> : 'roleclass[assistant]'}
-        </div>
-        <div class="message prose break-words overflow-hidden" innerHTML={htmlString()} />
+          {role === 'user' ? <img class="rounded-full" src={avatur}/> : <UserAvatar />}
       </div>
+      <div class="message prose break-words overflow-hidden" innerHTML={htmlString()} />
+    </div>
       {
-        showRetry?.() && onRetry && (
-          <div class="fie px-3 mb-2">
-            <div onClick={onRetry} class="gpt-retry-btn">
-              <IconRefresh />
-              <span>Regenerate</span>
-            </div>
-          </div>
-        )
-      }
+    showRetry?.() && onRetry && (
+      <div class="fie px-3 mb-2">
+        <div onClick={onRetry} class="gpt-retry-btn">
+          <IconRefresh />
+          <span>Regenerate</span>
+        </div>
+      </div>
+    )
+  }
     </div >
   )
 }
