@@ -6,7 +6,7 @@ import mdKatex from 'markdown-it-katex'
 import mdHighlight from 'markdown-it-highlightjs'
 import IconRefresh from './icons/Refresh'
 import { useClipboard, useEventListener } from 'solidjs-use'
-import UserAvatar from './icons/avatur'
+import Robot from './icons/Robot'
 import avatur from './icons/UserAvatar.svg'
 interface Props {
   role: ChatMessage['role']
@@ -70,7 +70,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       <div class="flex gap-3 rounded-lg" class:op-75={role === 'user'}>
         <div class={`shrink-0 w-7 h-7 mt-4 rounded-full op-80 `}>
           {role === 'user' && <img class="rounded-full" src={avatur} />}
-          {role === 'assistant' && class=`${roleclass[role]}`}
+          {role === 'assistant' && <Robot />}
         </div>
         <div class="message prose break-words overflow-hidden" innerHTML={htmlString()} />
       </div>
